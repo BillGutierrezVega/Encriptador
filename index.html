@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encriptador</title>
+</head>
+<body>
+    Introduzca la palabra <input id="secreto" type="text"><br>
+    <button onclick="encriptarTexto()">Encriptar</button> <button onclick="desencriptar()">Desencriptar</button><br>
+    <textarea name="" id="textareas" cols="30" rows="10"></textarea><br>
+    <button onclick="copiaTextarea()">Copiar</button>
+
+    <script>
+
+        function encriptarTexto() {
+            var secreto = document.getElementById("secreto").value;
+            var texto = "";
+            var letrasEncriptadas = {
+                "a": "ai",
+                "e": "enter",
+                "i": "imes",
+                "o": "ober",
+                "u": "ufat"
+            };
+            for (let letra of secreto) {
+                // hasOwnProperty(): verifica si existe la propiedad dentro del objeto
+                if (letrasEncriptadas.hasOwnProperty(letra)) {
+                    texto += letrasEncriptadas[letra];
+                } else {
+                    texto += letra;
+                }
+            }
+
+            document.getElementById("textareas").value = texto;
+            mensajeEncriptado = texto;
+        }
+
+        function copiaTextarea(){
+            var textareas = document.getElementById('textareas');
+            textareas.select();
+            document.execCommand('copy');
+            return textareas.value;
+        }
+        
+        var mensajeEncriptado;
+
+        var tablaReemplazos = {
+            "a": "ai",
+            "e": "enter",
+            "i": "imes",
+            "o": "ober",
+            "u": "ufat"
+        };
+        
+        var resultado;
+
+        function desencriptar(){
+            if (document.getElementById("secreto").value){
+                resultado = document.getElementById("secreto").value;
+            }else{
+                resultado = mensajeEncriptado;
+            }
+            
+            for (var letra in tablaReemplazos) {
+                // RegExp: se usa para crear expresiones regulares
+                var palabraBuscar = new RegExp(tablaReemplazos[letra], 'g');
+                resultado = resultado.replace(palabraBuscar, letra);
+            }
+            document.getElementById("textareas").value = resultado;
+        }
+
+    </script>
+</body>
+</html>
