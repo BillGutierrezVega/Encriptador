@@ -5,12 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Encriptador</title>
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-    Introduzca la palabra <input id="secreto" type="text"><br>
-    <button onclick="encriptarTexto()">Encriptar</button> <button onclick="desencriptar()">Desencriptar</button><br>
-    <textarea name="" id="textareas" cols="30" rows="10"></textarea><br>
-    <button onclick="copiaTextarea()">Copiar</button>
+    <header>
+        <img src="img/a.jpg" alt="" id="imagen-a">
+        <h1>Encriptador</h1>
+    </header>
+
+    <main>
+        <div class="input-botones">
+            <label for="">Introduzca la palabra </label>
+            <input id="secreto" type="text"><br>
+            <button onclick="encriptarTexto()" id="btn-encriptar">Encriptar</button> 
+            <button onclick="desencriptar()" id="btn-desencriptar">Desencriptar</button><br>
+        </div>
+
+        <div class="textarea-copia">
+            <textarea name="" id="textareas" cols="30" rows="10"></textarea><br>
+            <button onclick="copiaTextarea()">Copiar</button>
+        </div>
+
+    </main>
+
+    <footer>Desarrollado por Bill Toño Gutierrez Vega (todos los derechos reservados) - 2023</footer>
 
     <script>
 
